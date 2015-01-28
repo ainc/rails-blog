@@ -1,0 +1,13 @@
+<h1>The Best Blog Ever</h1>
+<%= link_to 'New Post', new_post_path %>
+<br />
+<% if @posts.count > 0 %>
+  <% @posts.each do |post| %>
+    <h2><%= link_to post.title, show_post_path(id: post.id) %></h2>
+    <h4><%= truncate post.content, length: 50 %></h4>
+    <%= link_to 'Edit Post', edit_post_path(id: post.id) %>
+    <%= link_to 'Delete Post', destroy_post_path(id: post.id), method: :delete %>
+  <% end %>
+<% else %>
+  <h2>Darn, looks like we don’t have anything...</h2>
+<% end %>
